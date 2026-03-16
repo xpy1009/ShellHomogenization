@@ -10,7 +10,7 @@ public:
     MeshLib() = delete;
     static void getQuadTets(Eigen::MatrixXd &vertices, Eigen::MatrixXi &tets);
     static void generateBox(Eigen::MatrixXd &vertices, Eigen::MatrixXi &tets);
-    static void rectangle(Eigen::MatrixXd &vertices, Eigen::MatrixXi &faces);
+    static void rectangle(Eigen::MatrixX3d &vertices, Eigen::MatrixX3i &faces);
 
     // From tactile/demo/psdemo.cpp
     // Return a list of 2D points for Clipper2

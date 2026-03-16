@@ -16,8 +16,8 @@ SimShell::SimShell()
     Eigen::SparseMatrix<double> paramsToCoords;
     Eigen::VectorXd params;
     std::vector<int> bdyIdx1, bdyIdx2;
-    // MeshLib::rectangle(V, F);
-    ShellMesh::biMatShellPeriodic(F, paramsToCoords, params, bbox, &bdyIdx1, &bdyIdx2);
+    MeshLib::rectangle(V, F);
+    // ShellMesh::biMatShellPeriodic(F, paramsToCoords, params, bbox, &bdyIdx1, &bdyIdx2);
     m_shell = std::make_unique<Shell>(V, F);
 
     // double xmin = V.col(0).minCoeff();

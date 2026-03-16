@@ -1,0 +1,9 @@
+[submodule "ext/tactile"]
+	path = ext/tactile
+	url = https://github.com/isohedral/tactile.git
+[submodule "ext/libigl"]
+	path = ext/libigl
+	url = https://github.com/libigl/libigl.git
+[submodule "ext/polyscope"]
+	path = ext/polyscope
+	url = https://github.com/nmwsharp/polyscope.git

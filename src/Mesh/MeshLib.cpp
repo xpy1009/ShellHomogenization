@@ -101,7 +101,7 @@ void MeshLib::generateBox(Eigen::MatrixXd &vertices, Eigen::MatrixXi &tets)
     gmsh::finalize();
 }
 
-void MeshLib::rectangle(Eigen::MatrixXd &vertices, Eigen::MatrixXi &faces)
+void MeshLib::rectangle(Eigen::MatrixX3d &vertices, Eigen::MatrixX3i &faces)
 {
     gmsh::initialize();
     gmsh::model::add("tris");

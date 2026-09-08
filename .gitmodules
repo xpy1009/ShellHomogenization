@@ -1,0 +1,6 @@
+[submodule "ext/tactile"]
+	path = ext/tactile
+	url = git@github.com:isohedral/tactile.git
+[submodule "ext/libigl"]
+	path = ext/libigl
+	url = git@github.com:libigl/libigl.git

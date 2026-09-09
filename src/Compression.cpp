@@ -17,6 +17,8 @@ Eigen::MatrixX3d Compression::run(
     std::ofstream &file,
     bool verbose)
 {
+    file << "# dl k1 k2" << std::endl;
+
     auto [lambda, mu] = Elasticity::lameParameters(E, nu);
 
     // move center to origin
@@ -68,7 +70,7 @@ Eigen::MatrixX3d Compression::run(
 
     const double origL = restPos.col(0).maxCoeff() - restPos.col(0).minCoeff();
     double prevL = origL;
-    for (size_t i = 0; i < 50; ++i) {
+    for (size_t i = 0; i < 45; ++i) {
         const double L = prevL - 1e-3;
         // initial guess
         curPos.col(0) *= L / prevL;
@@ -100,6 +102,8 @@ Eigen::MatrixX3d Compression::run(
     std::ofstream &file,
     bool verbose)
 {
+    file << "# dl k1 k2" << std::endl;
+
     // boundary condition
     std::vector<int> fixedVar;
     const double xMin = restPos.col(0).minCoeff(), xMax = restPos.col(0).maxCoeff();
@@ -143,7 +147,7 @@ Eigen::MatrixX3d Compression::run(
     };
 
 
-    for (size_t i = 0; i < 50; ++i) {
+    for (size_t i = 0; i < 45; ++i) {
         const double L = prevL - 1e-3;
         // initial guess
         curPos.col(0) *= L / prevL;
@@ -158,20 +162,6 @@ Eigen::MatrixX3d Compression::run(
 
 
         // fit
-        // const Eigen::MatrixX3d midPos = curPos;
-        // const double C = M_PI / L;
-        // const Eigen::VectorXd sincy = (C * midPos.col(0)).array().cos();
-        // const Eigen::VectorXd w = midPos.col(2);
-        // Eigen::MatrixX3d M(midPos.rows(), midPos.cols());
-        // M.col(0) = sincy;
-        // M.col(1) = midPos.col(1).array().square() * sincy.array();
-        // M.col(2).setOnes();
-        // const Eigen::Vector3d x = (M.transpose()*M).inverse() * (M.transpose()*w);
-        // const double A = x(0), B = x(1);
-        // const double k1 = -A * C * C;
-        // const double k2 = 2 * B;
-        // std::cout << "k1: " << k1 << " / k2: " << k2 << " D: " << x(2) << std::endl;
-
         auto [k1, k2] = fit(curPos);
 
         const double dl = origL - L;

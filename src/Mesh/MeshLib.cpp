@@ -109,6 +109,7 @@ void MeshLib::structuredSheet(
 
     gmsh::initialize();
     gmsh::model::add("structured sheet");
+    gmsh::option::setNumber("General.Verbosity", 2.0);
     namespace factory = gmsh::model::occ;
 
     // square sheet
@@ -141,8 +142,6 @@ void MeshLib::structuredSheet(
     factory::extrude(surface, 0, 0, height, volume);
 
     factory::synchronize();
-
-    gmsh::option::setNumber("General.Verbosity", 2.0);
 
     gmsh::model::mesh::generate(3);
     gmsh::model::mesh::setOrder(2);
@@ -183,6 +182,7 @@ void MeshLib::structuredSheet(
 
     gmsh::initialize();
     gmsh::model::add("structured sheet");
+    gmsh::option::setNumber("General.Verbosity", 2.0);
     namespace factory = gmsh::model::occ;
 
     // periodic region
@@ -222,12 +222,9 @@ void MeshLib::structuredSheet(
     factory::extrude(surface, 0, 0, height, volume);
 
     factory::synchronize();
-    // gmsh::option::setNumber("Mesh.MeshSizeFactor", 2);
 
     // extrude with subdivision will cause problem if setPeriodic is before generate
     const std::vector<std::pair<int, int>> sDimTags = setPeriodic({{dx1, dy1}, {dx2, dy2}});
-
-    gmsh::option::setNumber("General.Verbosity", 2.0);
 
     gmsh::model::mesh::generate(3);
     gmsh::model::mesh::setOrder(2);

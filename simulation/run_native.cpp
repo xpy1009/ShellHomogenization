@@ -26,22 +26,22 @@ int main(int argc, char **argv)
 
 
     constexpr bool verbose = false;
-    // // homogenization
-    // {
-    //     MeshLib::Tet10 T;
-    //     Eigen::SparseMatrix<double> proj;
-    //     Eigen::VectorXd var;
-    //     std::array<double, 4> trans;
-    //     MeshLib::structuredSheet(IH, params, inflateWidth, height, T, proj, var, trans);
-    //     Eigen::MatrixX3d restPos = (proj * var).reshaped<Eigen::RowMajor>(var.size()/3, 3);
-    //     Tet10 mesh(T);
+    // homogenization
+    {
+        MeshLib::Tet10 T;
+        Eigen::SparseMatrix<double> proj;
+        Eigen::VectorXd var;
+        std::array<double, 4> trans;
+        MeshLib::structuredSheet(IH, params, inflateWidth, height, T, proj, var, trans);
+        Eigen::MatrixX3d restPos = (proj * var).reshaped<Eigen::RowMajor>(var.size()/3, 3);
+        Tet10 mesh(T);
 
-    //     Homogenization sim(mesh, proj, var, trans, E, nu);
-    //     std::ofstream sFile("../data/stretching.txt");
-    //     sim.stretch(sFile, verbose);
-    //     std::ofstream bFile("../data/bending.txt");
-    //     sim.bend(bFile, verbose);
-    // }
+        Homogenization sim(mesh, proj, var, trans, E, nu);
+        std::ofstream sFile("../data/stretching.txt");
+        sim.stretch(sFile, verbose);
+        std::ofstream bFile("../data/bending.txt");
+        sim.bend(bFile, verbose);
+    }
 
 
     // compression

@@ -14,6 +14,7 @@ int main()
 
     constexpr double dx = 0.0930605;
     constexpr std::array<double, 3> dys = {0.0322371, 0.0537285, 0.0752199};
+    constexpr bool verbose = false;
     for (int i = 0; i < 3; ++i) {
         const int n = 3 + 2 * i;
         const double& dy = dys[i];
@@ -23,7 +24,7 @@ int main()
         Shell mesh(F);
 
         std::ofstream file("../data/H" + std::to_string(n) + ".txt");
-        const Eigen::MatrixX3d pos = Compression::run(mesh, restPos, stretchModel, bendModel, file, true);
+        const Eigen::MatrixX3d pos = Compression::run(mesh, restPos, stretchModel, bendModel, file, verbose);
         igl::writeOBJ("../data/H" + std::to_string(n) + ".obj", pos, F);
     }
 

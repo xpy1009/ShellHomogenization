@@ -16,18 +16,17 @@ A reference implementation for the paper [Taking a Moment to Characterize the Be
 
 Download the code with:
 ```
-git clone --recurse-submodules https://git.ista.ac.at/wojtan-group/peiyuan-xie/boundaryblaze.git
+git clone --recurse-submodules https://github.com/xpy1009/ShellHomogenization.git
 ```
-Repos of tactile and libigl are automatically downloaded.
+
 
 Install the dependencies using some package manager, such as Homebrew:
 ```
 brew install gmsh clipper2 pytorch 
 ```
-Eigen5 should be automatically installed.
 
 
-Python will be needed for training, but the version should not be important. Only `pytorch` and `matplotlib` needs to be installed, which can be done via `pip`:
+Python will be needed for training, but the version should not be important. Tested on Python 3.14.3. Only `pytorch` and `matplotlib` needs to be installed, which can be done via `pip`:
 ```
 pip install torch matplotlib
 ```
@@ -35,7 +34,7 @@ pip install torch matplotlib
 
 Build using `CMake` and your favorite build system:
 ```
-cd boundaryblaze
+cd ShellHomogenization
 mkdir build 
 cd build
 cmake ..
@@ -44,7 +43,7 @@ make -j8
 
 
 ### Replicating Results(Timed on MacBook Air M2)
-To reproduce **Fig. 8** in the paper that shows the Gaussian curvature of thick structured sheets and homogenized thin sheets with varying width, run the following commands:
+To reproduce **Fig. 8** in the paper that shows the Gaussian curvature of thick structured sheets and homogenized sheets with varying widths, run the following commands:
 
 ```
 ./run_native

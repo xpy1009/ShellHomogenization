@@ -123,6 +123,8 @@ void Homogenization::solve(Eigen::VectorXd& var, bool verbose)
 
 void Homogenization::stretch(std::ofstream &file, bool verbose)
 {
+    file << "# s1 s2 angle E00 E11 E01 S00 S11 S01 Psi" << std::endl;
+
     Eigen::VectorXd var = m_restVar;
     const int s1Idx = m_restVar.size() - 3;
 
@@ -248,6 +250,8 @@ void Homogenization::saveStretchData(std::ofstream &file, const Eigen::VectorXd&
 
 void Homogenization::bend(std::ofstream &file, bool verbose)
 {
+    file << "# k angle k00 k11 k01 m00 m11 m01 Psi" << std::endl;
+
     Eigen::VectorXd var = m_restVar;
     Eigen::VectorXd grad;
 
